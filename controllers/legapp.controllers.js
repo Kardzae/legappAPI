@@ -18,15 +18,27 @@ export const getUser = async (req, res)=>{
     //destructuracion del objeto body de request
     const {email, password} = req.body;
 
-    //destructuracion de Array para la respuesta de una consulta SELECT
-    const [rows] = await pool.query("SELECT * FROM usuario WHERE email = ? AND password=?", [email, password]);
+    //destructuracion de Array para la respuesta de una consulta SELECT en el caso de autenticacion de legalizador
+    let [rows] = await pool.query('SELECT * FROM usuario WHERE email = ? AND password = MD5( ? ) AND idRol=1', [email, password]);
 
     //Envío de respuesta al cliente
     if(rows.length > 0){
-        res.json(rows);
+        res.json(
+            {
+                message: 'user legalizador found',
+                result: rows
+            });
+        res.end();
     }else{
-        res.json({message: "User not found"});
+        [rows] = await pool.query('SELECT * FROM usuario WHERE email = ? AND password = MD5( ? ) AND idRol=2', [email, password]);
+        if(rows.length > 0){
+            res.json(
+                {
+                    message: 'user Administrador found',
+                    result: rows
+                });
+            res.end();
+        }
     }
     
-
 }
