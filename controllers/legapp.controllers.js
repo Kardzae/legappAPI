@@ -42,3 +42,21 @@ export const getUser = async (req, res)=>{
     }
     
 }
+/**
+ * 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {function} next 
+ */
+export const createProvider = async (req, res)=>{
+    //Destructuración de valores nombreProveedor y telefonoProveedor desde el objeto body
+    const {nombreProveedor, telefonoProveedor} = req.body;
+
+    //Ejecución de la consulta SQL a la BD desde la función query del pool de conexión
+    await pool.query("INSERT INTO proveedor(nombreProveedor, telefonoProveedor) VALUES( ? ,  ?)", [nombreProveedor, telefonoProveedor]);
+
+    //mensaje del servidor en el caso de que se haya ejecutado correctamente el controlador
+    res.json({
+        message: "Proveedor creado"
+    });
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2023 a las 04:18:49
+-- Tiempo de generación: 02-04-2023 a las 21:43:46
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.5
 
@@ -51,6 +51,13 @@ CREATE TABLE `proveedor` (
   `telefonoProveedor` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `proveedor`
+--
+
+INSERT INTO `proveedor` (`idProveedor`, `nombreProveedor`, `telefonoProveedor`) VALUES
+(1, 'testProveedor', '7357');
+
 -- --------------------------------------------------------
 
 --
@@ -92,7 +99,7 @@ CREATE TABLE `usuario` (
   `idRol` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -100,8 +107,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `idRol`, `nombre`, `email`, `password`) VALUES
-(1, 2, 'usuarioPrueba', 'usuario@email.com', '1234'),
-(2, 1, 'nombre2', 'email2@gmail.com', '3442');
+(5, 2, 'testUser', 'test@email', '202cb962ac59075b964b07152d234b70'),
+(6, 1, 'legalUser', 'legal@email.com', 'bcbe3365e6ac95ea2c0343a2395834dd'),
+(7, 2, 'no-legal', 'no-l@email', 'a6b18fa1351a9904031355730ae9eb7b');
 
 --
 -- Índices para tablas volcadas
@@ -139,13 +147,13 @@ ALTER TABLE `legalizacion`
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
