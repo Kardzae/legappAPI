@@ -1,10 +1,12 @@
 import express from 'express';
 import router from './routes/legapp.routes.js';
 import {urlencoded, json} from 'express';
+import cors from 'cors';
 
 const app = express();
 
 // middlewares
+app.use(cors());
 app.use(urlencoded({extended: true}));
 app.use(json());
 
