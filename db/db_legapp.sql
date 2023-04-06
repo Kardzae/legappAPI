@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2023 a las 21:43:46
+-- Tiempo de generación: 06-04-2023 a las 23:11:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.5
 
@@ -47,16 +47,20 @@ CREATE TABLE `legalizacion` (
 
 CREATE TABLE `proveedor` (
   `idProveedor` int(11) NOT NULL,
+  `NIT` varchar(150) NOT NULL,
   `nombreProveedor` varchar(45) NOT NULL,
-  `telefonoProveedor` varchar(12) NOT NULL
+  `telefonoProveedor` varchar(12) NOT NULL,
+  `direccion` varchar(150) NOT NULL,
+  `nombreContactoProveedor` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`idProveedor`, `nombreProveedor`, `telefonoProveedor`) VALUES
-(1, 'testProveedor', '7357');
+INSERT INTO `proveedor` (`idProveedor`, `NIT`, `nombreProveedor`, `telefonoProveedor`, `direccion`, `nombreContactoProveedor`) VALUES
+(2, '31341231', 'test update', '455664', 'cra 5 78', 'test'),
+(3, '3311132', 'Calamardo', '317 668 9876', 'suroriental el tiro', 'Gerardo ');
 
 -- --------------------------------------------------------
 
@@ -99,17 +103,21 @@ CREATE TABLE `usuario` (
   `idRol` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `idRol`, `nombre`, `email`, `password`) VALUES
-(5, 2, 'testUser', 'test@email', '202cb962ac59075b964b07152d234b70'),
-(6, 1, 'legalUser', 'legal@email.com', 'bcbe3365e6ac95ea2c0343a2395834dd'),
-(7, 2, 'no-legal', 'no-l@email', 'a6b18fa1351a9904031355730ae9eb7b');
+INSERT INTO `usuario` (`idUsuario`, `idRol`, `nombre`, `email`, `password`, `estado`) VALUES
+(5, 2, 'testUser', 'test@email', '202cb962ac59075b964b07152d234b70', 1),
+(6, 1, 'legalUser', 'legal@email.com', 'bcbe3365e6ac95ea2c0343a2395834dd', 0),
+(7, 2, 'no-legal', 'no-l@email', 'a6b18fa1351a9904031355730ae9eb7b', 1),
+(8, 2, 'admin2', 'test@email.com', '310dcbbf4cce62f762a2aaa148d556bd', 0),
+(9, 1, 'legal2', 'testlegal2@email.com', '250cf8b51c773f3f8dc8b4be867a9a02', 0),
+(10, 2, 'testAdmin', 'testA@email.com', 'b09c600fddc573f117449b3723f23d64', 1);
 
 --
 -- Índices para tablas volcadas
@@ -147,13 +155,13 @@ ALTER TABLE `legalizacion`
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

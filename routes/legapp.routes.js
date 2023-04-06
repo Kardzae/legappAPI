@@ -19,7 +19,7 @@ router.post('/createUser', createUser);
 //Método patch para actualizar el estado del usuario
 router.patch('/modifyState', modifyStateUser);
 
-
+//Método patch para actualizar valores en la tabla proveedor
 router.patch('/updateProvider', updateProvider);
 
 export default router;
