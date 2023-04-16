@@ -106,3 +106,20 @@ export const updateProvider = async (req, res)=>{
         message: "Provider updated"
     });
 }
+
+export const updateUser = async (req, res)=>{
+    const {emailToValidate} = req.params;
+
+    const {idRol, nombre, email, password} = req.body;
+
+    const [rows] = await pool.query("SELECT * FROM usuario WHERE email = ?", [emailToValidate]);
+
+    const idUser = rows[0].idUsuario;    
+
+    await pool.
+        query("UPDATE usuario SET idRol=IFNULL(?, idRol), nombre=IFNULL(?, nombre), email=IFNULL(?, email), password=IFNULL(MD5(?), password) WHERE idUsuario = ?", [idRol, nombre, email, password, idUser]);
+    
+    res.json({
+        message: "Updated User"
+    })
+}

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider } from '../controllers/legapp.controllers.js';
+import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider, updateUser } from '../controllers/legapp.controllers.js';
 import { validateUser } from '../middlewares/auth.js';
 //Llamando el objeto Router de express para dar ruta a los métodos
 const router = express.Router();
@@ -21,5 +21,8 @@ router.patch('/modifyState', modifyStateUser);
 
 //Método patch para actualizar valores en la tabla proveedor
 router.patch('/updateProvider', updateProvider);
+
+//actualizar usuario con Params
+router.patch('/updateUser/:emailToValidate', updateUser);
 
 export default router;
