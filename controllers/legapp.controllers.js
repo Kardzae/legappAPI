@@ -96,11 +96,11 @@ export const modifyStateUser = async (req, res)=>{
 
 export const updateProvider = async (req, res)=>{
 
-    const {id, nit, nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor} = req.body;
+    const {nit, nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor} = req.body;
 
     await pool.
-        query("UPDATE proveedor SET NIT = IFNULL(?, NIT), nombreProveedor = IFNULL(?, nombreProveedor), telefonoProveedor = IFNULL(?, telefonoProveedor), direccion = IFNULL(?, direccion), nombreContactoProveedor = IFNULL(?, nombreContactoProveedor) WHERE idProveedor = ?", 
-        [nit, nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor, id]);
+        query("UPDATE proveedor SET nombreProveedor = IFNULL(?, nombreProveedor), telefonoProveedor = IFNULL(?, telefonoProveedor), direccion = IFNULL(?, direccion), nombreContactoProveedor = IFNULL(?, nombreContactoProveedor) WHERE NIT = ?", 
+        [nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor, nit]);
 
     res.json({
         message: "Provider updated"
