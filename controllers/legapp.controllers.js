@@ -123,3 +123,10 @@ export const updateUser = async (req, res)=>{
         message: "Updated User"
     })
 }
+
+export const getProviders = async (req, res)=>{
+    
+    const [rows] = await pool.query("SELECT * FROM proveedor");
+
+    res.json(rows);
+}
