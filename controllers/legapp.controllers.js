@@ -130,7 +130,11 @@ export const getProviders = async (req, res)=>{
 
     res.json(rows);
 }
-
+/**
+ * Creacion de gasto en la BD
+ * @param {Object} req 
+ * @param {Object} res 
+ */
 export const createSpent = async (req, res)=>{
 
     const {nombreGasto} = req.body;
@@ -142,6 +146,11 @@ export const createSpent = async (req, res)=>{
     });
 }
 
+/**
+ * Obtener gastos
+ * @param {Object} req 
+ * @param {Object} res 
+ */
 export const getSpents = async (req, res)=>{
 
     const [rows] = await pool.query("SELECT * FROM tipogasto");
