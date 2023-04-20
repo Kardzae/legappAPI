@@ -130,3 +130,14 @@ export const getProviders = async (req, res)=>{
 
     res.json(rows);
 }
+
+export const createSpent = async (req, res)=>{
+
+    const {nombreGasto} = req.body;
+
+    await pool.query("INSERT INTO tipogasto(nombreGasto) VALUES( ? )", [nombreGasto]);
+
+    res.json({
+        message: "El gasto ha sido insertado"
+    });
+}
