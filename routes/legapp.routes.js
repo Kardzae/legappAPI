@@ -1,6 +1,6 @@
 import express from 'express';
 import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider, updateUser, getProviders, 
-    createSpent} from '../controllers/legapp.controllers.js';
+    createSpent, getSpents} from '../controllers/legapp.controllers.js';
 import { validateUser } from '../middlewares/auth.js';
 //Llamando el objeto Router de express para dar ruta a los métodos
 const router = express.Router();
@@ -10,6 +10,9 @@ router.get('/usuarios', getUsers);
 
 //Método GET para obtener información de proveedores
 router.get('/proveedores', getProviders);
+
+//Método GET para obtener información de gastos
+router.get('/getSpents', getSpents);
 
 //Método post para validación de usuarios
 router.post('/getUser', validateUser, getUser);

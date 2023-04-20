@@ -141,3 +141,12 @@ export const createSpent = async (req, res)=>{
         message: "El gasto ha sido insertado"
     });
 }
+
+export const getSpents = async (req, res)=>{
+
+    const [rows] = await pool.query("SELECT * FROM tipogasto");
+
+    res.json({
+        rows
+    });
+}
