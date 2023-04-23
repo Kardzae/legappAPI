@@ -155,7 +155,5 @@ export const getSpents = async (req, res)=>{
 
     const [rows] = await pool.query("SELECT * FROM tipogasto");
 
-    res.json({
-        rows
-    });
+    res.json(rows);
 }
