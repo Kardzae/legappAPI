@@ -157,3 +157,29 @@ export const getSpents = async (req, res)=>{
 
     res.json(rows);
 }
+
+export const updateStateProvider = async (req, res)=>{
+    //Destructuración del valor estado desde el objeto body
+    const {nit, estado} = req.body;
+
+    //Ejecución de consulta SQL a la BD por medio de la función query
+    await pool.query("UPDATE proveedor SET estado = ? WHERE NIT = ?", [estado, nit]);
+
+    //Mensaje del servidor
+    res.json({
+        message: "state of provider modified"
+    });
+}
+
+export const updateStateSpent = async (req, res)=>{
+    //Destructuración del valor estado desde el objeto body
+    const {id, estado} = req.body;
+
+    //Ejecución de consulta SQL a la BD por medio de la función query
+    await pool.query("UPDATE tipogasto SET estado = ? WHERE idTipoGasto = ?", [estado, id]);
+
+    //Mensaje del servidor
+    res.json({
+        message: "state of spent modified"
+    });
+}

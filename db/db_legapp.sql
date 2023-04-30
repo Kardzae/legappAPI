@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2023 a las 19:57:44
+-- Tiempo de generación: 30-04-2023 a las 22:46:34
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.5
 
@@ -51,16 +51,17 @@ CREATE TABLE `proveedor` (
   `nombreProveedor` varchar(45) NOT NULL,
   `telefonoProveedor` varchar(12) NOT NULL,
   `direccion` varchar(150) NOT NULL,
-  `nombreContactoProveedor` varchar(150) NOT NULL
+  `nombreContactoProveedor` varchar(150) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`idProveedor`, `NIT`, `nombreProveedor`, `telefonoProveedor`, `direccion`, `nombreContactoProveedor`) VALUES
-(2, '31341231', 'test update', '455664', 'cra 5 78', 'test'),
-(3, '3311132', 'PROVEEDOR', '1111111', 'DIRECCION', 'Gerardo ');
+INSERT INTO `proveedor` (`idProveedor`, `NIT`, `nombreProveedor`, `telefonoProveedor`, `direccion`, `nombreContactoProveedor`, `estado`) VALUES
+(2, '31341231', 'test update', '455664', 'cra 5 78', 'test', 0),
+(3, '3311132', 'PROVEEDOR', '1111111', 'DIRECCION', 'Gerardo ', 1);
 
 -- --------------------------------------------------------
 
@@ -89,19 +90,20 @@ INSERT INTO `rol` (`idRol`, `nombreRol`) VALUES
 
 CREATE TABLE `tipogasto` (
   `idTipoGasto` int(11) NOT NULL,
-  `nombreGasto` varchar(45) NOT NULL
+  `nombreGasto` varchar(45) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipogasto`
 --
 
-INSERT INTO `tipogasto` (`idTipoGasto`, `nombreGasto`) VALUES
-(1, 'Gasto prueba'),
-(2, 'gasto prueba 2'),
-(3, 'gasto prueba 2'),
-(4, 'PRUEBA 5'),
-(5, 'dfgdsf');
+INSERT INTO `tipogasto` (`idTipoGasto`, `nombreGasto`, `estado`) VALUES
+(1, 'Gasto prueba', 1),
+(2, 'gasto prueba 2', 0),
+(3, 'gasto prueba 2', 0),
+(4, 'PRUEBA 5', 0),
+(5, 'dfgdsf', 0);
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idUsuario`, `idRol`, `nombre`, `email`, `password`, `estado`) VALUES
 (5, 2, 'prueba2', 'otro@email.com', 'bcbe3365e6ac95ea2c0343a2395834dd', 1),
-(6, 1, 'legalUser', 'legal@email.com', 'bcbe3365e6ac95ea2c0343a2395834dd', 0),
+(6, 1, 'legalUser', 'legal@email.com', 'bcbe3365e6ac95ea2c0343a2395834dd', 1),
 (7, 2, 'no-legal', 'no-l@email', 'a6b18fa1351a9904031355730ae9eb7b', 1),
 (8, 2, 'actualizarPorParams', 'pruebaActualizarParams@email', '45014338dcfecc562addacbf4faddef8', 0),
 (9, 1, 'legal2', 'testlegal2@email.com', '250cf8b51c773f3f8dc8b4be867a9a02', 0),
