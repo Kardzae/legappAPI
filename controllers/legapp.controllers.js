@@ -183,3 +183,16 @@ export const updateStateSpent = async (req, res)=>{
         message: "state of spent modified"
     });
 }
+
+export const updateSpent = async (req, res)=>{
+    //Destructuración del valor estado desde el objeto body
+    const {id, nombreGasto} = req.body;
+
+    //Ejecución de consulta SQL a la BD por medio de la función query
+    await pool.query("UPDATE tipogasto SET nombreGasto = IFNULL(?, nombreGasto) WHERE idTipoGasto = ?", [nombreGasto, id]);
+
+    //Mensaje del servidor
+    res.json({
+        message: "Spent modified"
+    });
+}

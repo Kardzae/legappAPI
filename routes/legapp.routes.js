@@ -1,6 +1,6 @@
 import express from 'express';
 import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider, updateUser, getProviders, 
-    createSpent, getSpents, updateStateProvider, updateStateSpent} from '../controllers/legapp.controllers.js';
+    createSpent, getSpents, updateStateProvider, updateStateSpent, updateSpent} from '../controllers/legapp.controllers.js';
 import { validateUser } from '../middlewares/auth.js';
 //Llamando el objeto Router de express para dar ruta a los métodos
 const router = express.Router();
@@ -40,5 +40,8 @@ router.patch('/updateStateProvider', updateStateProvider);
 
 //actualizar tipo de gasto
 router.patch('/updateStateSpent',updateStateSpent);
+
+//actualizar nombre de gasto
+router.patch('/updateSpent',updateSpent);
 
 export default router;
