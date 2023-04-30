@@ -83,10 +83,10 @@ export const createUser = async (req, res)=>{
 
 export const modifyStateUser = async (req, res)=>{
     //Destructuración del valor estado desde el objeto body
-    const {idUsuario, estado} = req.body;
+    const {email, estado} = req.body;
 
     //Ejecución de consulta SQL a la BD por medio de la función query
-    await pool.query("UPDATE usuario SET estado = ? WHERE idUsuario = ?", [estado, idUsuario]);
+    await pool.query("UPDATE usuario SET estado = ? WHERE email = ?", [estado, email]);
 
     //Mensaje del servidor
     res.json({
