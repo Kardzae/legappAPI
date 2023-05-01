@@ -54,7 +54,7 @@ export const createProvider = async (req, res)=>{
 
     //Ejecución de la consulta SQL a la BD desde la función query del pool de conexión
     await pool.
-        query("INSERT INTO proveedor(NIT, nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor) VALUES( ?, ?, ?, ?, ? )",
+        query("INSERT INTO proveedor(NIT, nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor, estado) VALUES( ?, ?, ?, ?, ?, 1 )",
         [nit, nombreProveedor, telefonoProveedor, direccion, nombreContactoProveedor]);
 
     //mensaje del servidor en el caso de que se haya ejecutado correctamente el controlador para crear proveedores
@@ -139,7 +139,7 @@ export const createSpent = async (req, res)=>{
 
     const {nombreGasto} = req.body;
 
-    await pool.query("INSERT INTO tipogasto(nombreGasto) VALUES( ? )", [nombreGasto]);
+    await pool.query("INSERT INTO tipogasto(nombreGasto, estado) VALUES( ?, 1 )", [nombreGasto]);
 
     res.json({
         message: "El gasto ha sido insertado"
