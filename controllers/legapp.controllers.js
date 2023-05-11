@@ -196,3 +196,14 @@ export const updateSpent = async (req, res)=>{
         message: "Spent modified"
     });
 }
+
+export const insertLegalization = async (req, res)=>{
+    const {idUsuario, idRol, idTipoGasto, idProveedor, descripcionGasto, valorGasto} = req.body;
+
+    await pool.
+        query("INSERT INTO legalizacion(idUsuario, idRol, idTipoGasto, idProveedor, fechaCreacion, descripcionGasto, valorGasto) VALUES ( ?, ?, ?, ?, CURDATE(), ?, ? )",[idUsuario, idRol, idTipoGasto, idProveedor, descripcionGasto, valorGasto]);
+
+    res.json({
+        message: "Legalizacion creada"
+    });
+}

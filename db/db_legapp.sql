@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-04-2023 a las 22:46:34
+-- Tiempo de generación: 11-05-2023 a las 05:29:42
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.5
 
@@ -33,11 +33,21 @@ CREATE TABLE `legalizacion` (
   `idRol` int(11) NOT NULL,
   `idTipoGasto` int(11) NOT NULL,
   `idProveedor` int(11) NOT NULL,
-  `fechaCreacion` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fechaCreacion` date NOT NULL DEFAULT current_timestamp(),
   `descripcionGasto` varchar(255) DEFAULT NULL,
   `valorGasto` varchar(45) NOT NULL,
   `evidenciaGasto` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `legalizacion`
+--
+
+INSERT INTO `legalizacion` (`idLegalizacion`, `idUsuario`, `idRol`, `idTipoGasto`, `idProveedor`, `fechaCreacion`, `descripcionGasto`, `valorGasto`, `evidenciaGasto`) VALUES
+(2, 4, 1, 5, 10, '2023-05-10', 'prueba test', '345555', ''),
+(3, 4, 1, 5, 10, '2023-05-10', 'prueba test', '345555', ''),
+(4, 4, 1, 5, 10, '2023-05-10', 'prueba test', '345555', ''),
+(5, 4, 1, 5, 10, '2023-05-10', 'prueba test', '345555', '');
 
 -- --------------------------------------------------------
 
@@ -61,7 +71,8 @@ CREATE TABLE `proveedor` (
 
 INSERT INTO `proveedor` (`idProveedor`, `NIT`, `nombreProveedor`, `telefonoProveedor`, `direccion`, `nombreContactoProveedor`, `estado`) VALUES
 (2, '31341231', 'test update', '455664', 'cra 5 78', 'test', 0),
-(3, '3311132', 'PROVEEDOR', '1111111', 'DIRECCION', 'Gerardo ', 1);
+(3, '3311132', 'PROVEEDOR', '1111111', 'DIRECCION', 'Gerardo ', 1),
+(4, '2231341', 'testProvider', '3453321', 'Siloe', 'Martha', 1);
 
 -- --------------------------------------------------------
 
@@ -99,11 +110,14 @@ CREATE TABLE `tipogasto` (
 --
 
 INSERT INTO `tipogasto` (`idTipoGasto`, `nombreGasto`, `estado`) VALUES
-(1, 'Gasto prueba', 1),
+(1, 'updatedGastico', 1),
 (2, 'gasto prueba 2', 0),
 (3, 'gasto prueba 2', 0),
 (4, 'PRUEBA 5', 0),
-(5, 'dfgdsf', 0);
+(5, 'dfgdsf', 0),
+(6, 'POSTOBON', 1),
+(7, 'Yu Gi Oh', 1),
+(8, 'pase de batalla fortnite', 1);
 
 -- --------------------------------------------------------
 
@@ -168,19 +182,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `legalizacion`
 --
 ALTER TABLE `legalizacion`
-  MODIFY `idLegalizacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLegalizacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipogasto`
 --
 ALTER TABLE `tipogasto`
-  MODIFY `idTipoGasto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idTipoGasto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

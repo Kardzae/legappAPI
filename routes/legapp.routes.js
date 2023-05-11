@@ -1,6 +1,6 @@
 import express from 'express';
 import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider, updateUser, getProviders, 
-    createSpent, getSpents, updateStateProvider, updateStateSpent, updateSpent} from '../controllers/legapp.controllers.js';
+    createSpent, getSpents, updateStateProvider, updateStateSpent, updateSpent, insertLegalization} from '../controllers/legapp.controllers.js';
 import { validateUser } from '../middlewares/auth.js';
 //Llamando el objeto Router de express para dar ruta a los métodos
 const router = express.Router();
@@ -25,6 +25,9 @@ router.post('/createUser', createUser);
 
 //Método POST para creación de gastos
 router.post('/createSpent', createSpent);
+
+//Método POST para creacion de legalizacion
+router.post('/createLegalization', insertLegalization);
 
 //Método patch para actualizar el estado del usuario
 router.patch('/modifyState', modifyStateUser);
