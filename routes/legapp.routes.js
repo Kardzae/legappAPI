@@ -6,7 +6,10 @@ import { validateUser } from '../middlewares/auth.js';
 import storage from '../multer.js';
 import multer from 'multer';
 
-const uploader = multer({storage});
+const uploader = multer({
+    storage, 
+    limits: {fileSize: 1000000}
+});
 
 //Llamando el objeto Router de express para dar ruta a los métodos
 const router = express.Router();
