@@ -2,6 +2,12 @@ import express from 'express';
 import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider, updateUser, getProviders, 
     createSpent, getSpents, updateStateProvider, updateStateSpent, updateSpent, insertLegalization} from '../controllers/legapp.controllers.js';
 import { validateUser } from '../middlewares/auth.js';
+
+import storage from '../multer.js';
+import multer from 'multer';
+
+const uploader = multer({storage});
+
 //Llamando el objeto Router de express para dar ruta a los métodos
 const router = express.Router();
 
@@ -27,7 +33,7 @@ router.post('/createUser', createUser);
 router.post('/createSpent', createSpent);
 
 //Método POST para creacion de legalizacion
-router.post('/createLegalization', insertLegalization);
+router.post('/createLegalization', uploader.single('file'), insertLegalization);
 
 //Método patch para actualizar el estado del usuario
 router.patch('/modifyState', modifyStateUser);
