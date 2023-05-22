@@ -7,8 +7,7 @@ import storage from '../multer.js';
 import multer from 'multer';
 
 const uploader = multer({
-    storage, 
-    limits: {fileSize: 1000000}
+    storage
 });
 
 //Llamando el objeto Router de express para dar ruta a los métodos
