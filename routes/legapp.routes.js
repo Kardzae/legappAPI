@@ -1,6 +1,7 @@
 import express from 'express';
 import { getUsers, getUser, createProvider, createUser, modifyStateUser, updateProvider, updateUser, getProviders, 
-    createSpent, getSpents, updateStateProvider, updateStateSpent, updateSpent, insertLegalization} from '../controllers/legapp.controllers.js';
+    createSpent, getSpents, updateStateProvider, updateStateSpent, updateSpent, insertLegalization, getLegalization,
+    getLegalizationByUserId} from '../controllers/legapp.controllers.js';
 import { validateUser } from '../middlewares/auth.js';
 
 import storage from '../multer.js';
@@ -54,5 +55,11 @@ router.patch('/updateStateSpent',updateStateSpent);
 
 //actualizar nombre de gasto
 router.patch('/updateSpent',updateSpent);
+
+//obtener datos de legalizacion
+router.get('/getAllLegalizations', getLegalization);
+
+//obtener registros de legalizaciones relacionados a un usuario
+router.get('/getLegalizationsByUserId/:userId', getLegalizationByUserId);
 
 export default router;

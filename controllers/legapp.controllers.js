@@ -215,3 +215,19 @@ export const insertLegalization = async (req, res)=>{
     }
     
 }
+
+export const getLegalization = async (req, res)=>{
+
+    const [rows] = await pool.query("SELECT * FROM legalizacion");
+
+    res.json(rows);
+}
+
+export const getLegalizationByUserId = async (req, res)=>{
+
+    const userId = req.params.userId;
+
+    const [rows] = await pool.query("SELECT * FROM legalizacion WHERE idUsuario = ?", [userId]);
+
+    res.json(rows);
+}
