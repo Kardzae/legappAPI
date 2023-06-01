@@ -200,14 +200,14 @@ export const updateSpent = async (req, res)=>{
 export const insertLegalization = async (req, res)=>{
     const {body, file} = req;
     
-    const {idUsuario, idRol, idTipoGasto, idProveedor, descripcionGasto, valorGasto} = body;
+    const {idUsuario, idTipoGasto, idProveedor, descripcionGasto, valorGasto, numFactura} = body;
 
     if(file){
 
         let url = `http://localhost:4500/images/${file.filename}`;
         
         await pool.
-            query("INSERT INTO legalizacion(idUsuario, idRol, idTipoGasto, idProveedor, fechaCreacion, descripcionGasto, valorGasto, evidenciaGasto) VALUES ( ?, ?, ?, ?, CURDATE(), ?, ?, ? )", [idUsuario, idRol, idTipoGasto, idProveedor, descripcionGasto, valorGasto, url]);
+            query("INSERT INTO legalizacion(idUsuario, idRol, idTipoGasto, idProveedor, fechaCreacion, descripcionGasto, valorGasto, evidenciaGasto, numFactura) VALUES ( ?, ?, ?, ?, CURDATE(), ?, ?, ?, ? )", [idUsuario, '1', idTipoGasto, idProveedor, descripcionGasto, valorGasto, url, numFactura]);
 
         res.json({
             message: "Legalizacion creada"
